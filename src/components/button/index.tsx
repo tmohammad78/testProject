@@ -2,11 +2,13 @@ import { ButtonStyle } from "./style";
 import { ReactNode } from 'react'
 interface Props {
     children: ReactNode,
-    color?: string
+    color?: string,
+    borderColor?: string;
+    onClick?: (e?: React.MouseEvent) => void
 }
-const Button = ({ children, ...props }: Props): any => {
+const Button = ({ onClick, children, ...props }: Props): any => {
     return (
-        <ButtonStyle {...props}>
+        <ButtonStyle onClick={onClick} {...props}>
             {children}
         </ButtonStyle>
     )

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ButtonStyle = styled.button.attrs(props => ({
-    type: 'text'
+  type: 'text'
 }))`
     padding-left : ${({ prl }) => prl || 5}px;    
     padding-right : ${({ prl }) => prl || 5}px;
@@ -10,7 +10,7 @@ export const ButtonStyle = styled.button.attrs(props => ({
     width: 90%;
     margin: .5rem auto;
     color : ${({ color }) => color};
-    border: none;
+    border-color: ${({ borderColor }) => borderColor ? borderColor : 'none'};
     background-color:transparent;
     border-radius: 20px;
     word-break: break-all;

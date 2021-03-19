@@ -56,6 +56,7 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.13.0",
+    "@storybook/addon-actions": "^6.1.21",
     "@storybook/react": "^6.1.21",
     "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.9",

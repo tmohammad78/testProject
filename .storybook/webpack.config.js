@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = ({ config }) => {
+    config.
     config.module.rules.push({
         test: /\.(ts|tsx)$/,
         use: [
