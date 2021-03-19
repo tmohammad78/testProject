@@ -1,11 +1,12 @@
 import { ButtonStyle } from "./style";
 import { ReactNode } from 'react'
 interface Props {
-    children: ReactNode
+    children: ReactNode,
+    color?: string
 }
-const Button = ({ children }: Props): any => {
+const Button = ({ children, ...props }: Props): any => {
     return (
-        <ButtonStyle>
+        <ButtonStyle {...props}>
             {children}
         </ButtonStyle>
     )
