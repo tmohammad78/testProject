@@ -1,10 +1,9 @@
-import ButtonList from "src/components/buttonList"
-import Button from "../../components/button/index"
+import TestComponent from '../../components/test'
 
 const QuestionPage = () => {
     return (
         <div>
-            <ButtonList />
+            <TestComponent />
         </div>
     )
 }
