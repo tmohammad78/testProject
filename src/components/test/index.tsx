@@ -44,30 +44,6 @@ const answers = [
         answer: "Central Processing Unit 4",
     }
 ]
-
-// const factory = () => {
-//     return obj.map((item) => {
-//         const correctAnswer = {
-//             answer: item.correct_answer,
-//             correct: true
-//         }
-//         const incAnswer = item.incorrect_answers.map((answer) => {
-//             return {
-//                 answer,
-//                 correct: false
-//             }
-//         })
-//         console.log(incAnswer)
-//         return {
-//             question: item.question,
-//             answers: [
-//                 {...correctAnswer},
-
-//             ]
-//         }
-//     })
-
-// }
 const TestComponent = () => {
 
     return (
