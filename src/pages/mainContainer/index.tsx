@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import { factoryMethod } from '../../utils/factoryMethod'
 import { newQuestion } from "src/type/newQuestion";
 import Spinner from "src/components/spinner";
+import QuestionBox from "src/components/questionBox";
+import { newObjData } from "src/type/newObjData";
 
 const QuestionContainer = () => {
-    const [questions, setQuestions] = useState<newQuestion[] | null>();
+    const [data, setData] = useState<any>();
     const [loading, setLoading] = useState(false)
     useEffect(() => {
         fetchData();
@@ -17,19 +19,18 @@ const QuestionContainer = () => {
     const fetchData = () => {
         setLoading(true)
         axios.get("https://opentdb.com/api.php?amount=10&category=18&type=multiple")
-            .then(({ data }) => {
-                setQuestions(factoryMethod(data.results));
+            .then(({ data }: any) => {
+                const { questions, answers } = factoryMethod(data.results)
+                setData(factoryMethod(data.results));
                 setLoading(false)
             })
+            .catch((err) => console.log(err));
     }
     return (
-        <div>
+        <>
             {loading && <Spinner />}
-            {questions && questions.map((item) => {
-                return <div>{item.question}</div>
-            })
-            }
-        </div>
+            {data && !loading && <QuestionBox data={data} />}
+        </>
     )
 }
 export default QuestionContainer;

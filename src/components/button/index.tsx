@@ -4,11 +4,12 @@ interface Props {
     children: ReactNode,
     color?: string,
     borderColor?: string;
-    onClick?: (e?: React.MouseEvent) => void
+    onClick?: (e?: React.MouseEvent) => void;
+    className?: string;
 }
-const Button = ({ onClick, children, ...props }: Props): any => {
+const Button = ({ onClick, className, children, ...props }: Props): any => {
     return (
-        <ButtonStyle onClick={onClick} {...props}>
+        <ButtonStyle className={className} onClick={onClick} {...props}>
             {children}
         </ButtonStyle>
     )

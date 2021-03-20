@@ -1,5 +1,7 @@
 export interface newAnswer {
     answer: string;
     correct: boolean;
-    id: number
+    id: number;
+    active?: boolean;
+    status?: string
 }

@@ -10,11 +10,16 @@ export const ButtonStyle = styled.button.attrs(props => ({
     width: 90%;
     margin: .5rem auto;
     color : ${({ color }) => color};
-    border-color: ${({ borderColor }) => borderColor ? borderColor : 'none'};
     background-color:transparent;
     border-radius: 20px;
     word-break: break-all;
     box-shadow : 0px 0px 5px 0px rgb(0 0 0 / 48%);
+    &.incorrect{
+      border-color: red;
+    }
+    &.correct{
+      border-color: green;
+     }
     &[disabled] {
         cursor: default;
         background-color: #eeee;

@@ -48,7 +48,7 @@ const TestComponent = () => {
 
     return (
         <div>
-            <QuestionBox question="dcdc" answers={answers} />
+            {/* <QuestionBox question="dcdc" answers={answers} /> */}
         </div>
     )
 }
