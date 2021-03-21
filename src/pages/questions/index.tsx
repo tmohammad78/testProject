@@ -1,8 +1,8 @@
-import TestComponent from '../../components/test';
+import { FC } from 'react';
 import QuestionContainer from '../mainContainer';
 import "./style.scss";
 
-const QuestionPage = () => {
+const QuestionPage: FC = () => {
     return (
         <div className="main-box">
             <div className="inner" >

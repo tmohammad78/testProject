@@ -1,14 +1,40 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { createContext, Dispatch, FC, useEffect, useReducer, useState } from "react";
 import { factoryMethod } from '../../utils/factoryMethod'
-import { newQuestion } from "src/type/newQuestion";
 import Spinner from "src/components/spinner";
 import QuestionBox from "src/components/questionBox";
-import { newObjData } from "src/type/newObjData";
+import { ContextState } from "src/type/contextState";
+import RestApi from "src/Api/rest";
 
-const QuestionContainer = () => {
-    const [data, setData] = useState<any>();
+const initialState: ContextState = {
+    questions: [],
+    answers: [],
+    step: 0,
+    result: []
+}
+// export const DataContext = createContext<
+//     { data: ContextState; setData: Dispatch<any> }>
+//     ({ data: initialState, setData: () => null })
+export const DataContext = createContext(null)
+function reducer(state: ContextState, action: any): ContextState {
+    switch (action.type) {
+        case "setData":
+            return {
+                ...state,
+                ...state.questions,
+                ...state.answers
+            }
+        default:
+            return { ...state }
+    }
+    // console.log(item, state, 'ddd')
+    // return { ...state, ...item }
+}
+
+const QuestionContainer: FC = () => {
+    const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false)
+
     useEffect(() => {
         fetchData();
     }, [])
@@ -18,18 +44,25 @@ const QuestionContainer = () => {
      */
     const fetchData = () => {
         setLoading(true)
-        axios.get("https://opentdb.com/api.php?amount=10&category=18&type=multiple")
+        axios.get(RestApi.getQuestions())
             .then(({ data }: any) => {
                 const { questions, answers } = factoryMethod(data.results)
-                setData(factoryMethod(data.results));
+                setData({ questions, answers });
+            })
+            .catch((err) => console.log(err))
+            .finally(() => {
                 setLoading(false)
             })
-            .catch((err) => console.log(err));
     }
     return (
         <>
             {loading && <Spinner />}
-            {data && !loading && <QuestionBox data={data} />}
+            {
+                data && !loading &&
+                <DataContext.Provider value={{ data, setData }}>
+                    <QuestionBox />
+                </DataContext.Provider>
+            }
         </>
     )
 }

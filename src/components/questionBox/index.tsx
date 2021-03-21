@@ -1,52 +1,55 @@
-import { useEffect, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
+import { DataContext } from "src/pages/mainContainer";
 import { newAnswer } from "src/type/newAnswer";
 import { newObjData } from "src/type/newObjData";
 import { newQuestion } from "src/type/newQuestion";
 import ButtonList from "../buttonList";
+import IconBox from "../iconBox";
 import TitleQuestion from "../title";
 
-interface Props {
-    data: newObjData
-}
-const QuestionBox = ({ data }: Props) => {
-    const iconStates: any = []
+const QuestionBox: FC = () => {
+    const { data, setData } = useContext(DataContext)
     const [state, setState] = useState({
-        answers: data.answers,
-        questions: data.questions,
         step: 0,
-        finished: false
+        finished: false,
+        iconStatus: ['']
     })
+    console.log(data)
 
-    const handlerNextStep = () => {
+    // const handlerNextStep = () => {
 
-        state.answers[state.step].find((item) => {
-            const a = Object.keys(item).includes("status")
-            if (a) {
-                iconStates.push({ status: item.status })
-            }
-        })
+    //     data[0].answers[state.step].find((item: any) => {
+    //         const a = Object.keys(item).includes("status")
+    //         if (a) {
+    //             setState((prev: any) => ({
+    //                 ...prev,
+    //                 iconStatus: [...prev.iconStatus, item.status === "correct"]
+    //             }))
+    //         }
+    //     })
 
-        if (state.step + 1 >= data.answers.length) {
-            setState({
-                ...state,
-                finished: true
-            })
-        } else {
-            setTimeout(() => {
-                setState((prev) => ({
-                    ...prev,
-                    step: prev.step + 1
-                }))
-            }, 1000)
-        }
-    }
+    //     if (state.step + 1 >= data[0].answers.length) {
+    //         setState({
+    //             ...state,
+    //             finished: true
+    //         })
+    //     } else {
+    //         setTimeout(() => {
+    //             setState((prev) => ({
+    //                 ...prev,
+    //                 step: prev.step + 1
+    //             }))
+    //         }, 1000)
+    //     }
+    //     console.log("sss", state.iconStatus)
+    // }
     return (
         <>
             {
                 !state.finished &&
                 <>
-                    <TitleQuestion question={state.questions[state.step]} />
-                    <ButtonList listButton={state.answers[state.step]} callNextStep={handlerNextStep} />
+                    {/* <TitleQuestion /> */}
+                    <ButtonList />
                 </>
             }
             {state.finished && <div>Finished</div>}

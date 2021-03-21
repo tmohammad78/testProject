@@ -9,6 +9,7 @@ import NotFound from "../pages/notFound";
 import QuestionPage from "../pages/questions";
 
 const Routes = () => {
+    
     return (
         <BrowserRouter>
             <Switch>
