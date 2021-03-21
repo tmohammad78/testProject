@@ -1,25 +1,39 @@
 
-import { createContext, useContext, useEffect, useState } from 'react';
-const AuthContext = createContext(null);
+import { createContext, ReactNode, useContext, useEffect, useReducer, useState } from 'react';
+import { AuthType } from 'src/type/authType';
 
-function AuthProvider({ children }: any): any {
-    const [state, setState] = useState<any>({
-        loading: false,
-        status: '',
-        user: null
-    })
-    useEffect(() => {
-        setState({
-            loading: true,
-            status: 'success',
-            user: {
-                firstName: "Hamed",
-                lastName: "kazemi"
+
+const initial: AuthType = {
+    loading: false,
+    status: '',
+    user: {
+        firstname: '',
+        lastname: ''
+    }
+}
+
+export const AuthContext = createContext<any>(initial);
+
+const reducer = (state: AuthType, action: any) => {
+    switch (action.type) {
+        case "LOGIN":
+            const { firstname, lastname, status } = action.payload;
+            return {
+                ...state,
+                status,
+                user: {
+                    firstname,
+                    lastname
+                }
             }
-        })
-    }, [])
+        default:
+            return state;
+    }
+}
+function AuthProvider({ children }: { children: ReactNode }) {
+    const [state, dispatch] = useReducer(reducer, initial)
     return (
-        <AuthContext.Provider value={state}>
+        <AuthContext.Provider value={{ state, dispatch }}>
             {children}
         </AuthContext.Provider>
     )

@@ -1,34 +1,42 @@
 import { FC, useCallback, useContext, useEffect, useState } from "react";
-import { DataContext } from "src/pages/mainContainer";
+import { DataContext } from "src/context/data-context";
 import { newAnswer } from "../../type/newAnswer";
 import Button from "../button";
 import './style.scss';
 
 const ButtonList: FC = () => {
-    const { data, setData } = useContext(DataContext)
+    const { state, dispatch } = useContext(DataContext)
     // const [list, setList] = useState(listButton);
-    // useEffect(() => {
-    //     setList(listButton)
-    // }, [listButton])
+    useEffect(() => {
+        console.log("Scsdc");
+
+        console.log(state);
+
+    })
     const handlerClick = (item: any) => {
-        const [obj] = data.answers[data.step].filter((answer: any) => answer.id === item.id).map((obj: any) => {
+        let status = ''
+        const [obj] = state.answers[state.step].filter((answer: any) => answer.id === item.id).map((obj: any) => {
             if (obj.correct) {
-                obj.status = 'correct'
+                status = 'correct'
             } else {
-                obj.status = 'incorrect'
+                status = 'incorrect'
             }
             return obj;
         })
+        obj.status = status;
         console.log(obj)
-        // setData({
-        //     result:
-        // })
-        // setList([...list]);
-        // callNextStep()
+        dispatch({
+            type: "NextStep",
+            step: state.step + 1
+        })
+        dispatch({
+            type: "SETRESULT",
+            result: [...state.result, status]
+        })
     }
     return (
         <div className="buttonList">
-            {data.answers[data.step] && data.answers[data.step].map((item: newAnswer, i: number) => {
+            {state.answers[state.step] && state.answers[state.step].map((item: newAnswer, i: number) => {
                 return (
                     <Button className={item.status} key={item.id} onClick={() => handlerClick(item)}  >
                         {item.answer}

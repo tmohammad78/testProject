@@ -4,12 +4,10 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
 import './styles/main.scss';
-import AppProviders from './context/appProviders'
+
 ReactDOM.render(
   <StrictMode>
-    <AppProviders>
-      <App />
-    </AppProviders>
+    <App />
   </StrictMode>,
   document.getElementById('root')
 );

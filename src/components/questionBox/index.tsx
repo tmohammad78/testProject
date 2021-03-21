@@ -1,5 +1,4 @@
 import { FC, useContext, useEffect, useState } from "react";
-import { DataContext } from "src/pages/mainContainer";
 import { newAnswer } from "src/type/newAnswer";
 import { newObjData } from "src/type/newObjData";
 import { newQuestion } from "src/type/newQuestion";
@@ -8,13 +7,13 @@ import IconBox from "../iconBox";
 import TitleQuestion from "../title";
 
 const QuestionBox: FC = () => {
-    const { data, setData } = useContext(DataContext)
+    // const { data, setData } = useContext(DataContext)
     const [state, setState] = useState({
         step: 0,
         finished: false,
         iconStatus: ['']
     })
-    console.log(data)
+
 
     // const handlerNextStep = () => {
 
@@ -45,13 +44,8 @@ const QuestionBox: FC = () => {
     // }
     return (
         <>
-            {
-                !state.finished &&
-                <>
-                    {/* <TitleQuestion /> */}
-                    <ButtonList />
-                </>
-            }
+            <TitleQuestion />
+            <ButtonList />
             {state.finished && <div>Finished</div>}
         </>
     )

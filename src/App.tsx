@@ -1,5 +1,4 @@
 import Routes from "./routes";
-import UserContext from './context/userContext'
 import { useState } from "react";
 import { AuthProvider } from "./context/auth-context";
 
