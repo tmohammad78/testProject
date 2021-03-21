@@ -8,42 +8,49 @@ import TitleQuestion from "../title";
 interface Props {
     data: newObjData
 }
-const QuestionBox =
-    ({ data }: Props) => {
-        const [state, setState] = useState({
-            answers: data.answers,
-            questions: data.questions,
-            step: 0,
-            finished: false
+const QuestionBox = ({ data }: Props) => {
+    const iconStates: any = []
+    const [state, setState] = useState({
+        answers: data.answers,
+        questions: data.questions,
+        step: 0,
+        finished: false
+    })
+
+    const handlerNextStep = () => {
+
+        state.answers[state.step].find((item) => {
+            const a = Object.keys(item).includes("status")
+            if (a) {
+                iconStates.push({ status: item.status })
+            }
         })
 
-        const handlerNextStep = () => {
-            if (state.step + 1 >= data.answers.length) {
-                setState({
-                    ...state,
-                    finished: true
-                })
-            } else {
-                setTimeout(() => {
-                    setState((prev) => ({
-                        ...prev,
-                        step: prev.step + 1
-                    }))
-                }, 1000)
-            }
-
+        if (state.step + 1 >= data.answers.length) {
+            setState({
+                ...state,
+                finished: true
+            })
+        } else {
+            setTimeout(() => {
+                setState((prev) => ({
+                    ...prev,
+                    step: prev.step + 1
+                }))
+            }, 1000)
         }
-        return (
-            <>
-                {
-                    !state.finished &&
-                    <>
-                        <TitleQuestion question={state.questions[state.step]} />
-                        <ButtonList listButton={state.answers[state.step]} callNextStep={handlerNextStep} />
-                    </>
-                }
-                {state.finished && <div>Finished</div>}
-            </>
-        )
     }
+    return (
+        <>
+            {
+                !state.finished &&
+                <>
+                    <TitleQuestion question={state.questions[state.step]} />
+                    <ButtonList listButton={state.answers[state.step]} callNextStep={handlerNextStep} />
+                </>
+            }
+            {state.finished && <div>Finished</div>}
+        </>
+    )
+}
 export default QuestionBox;
