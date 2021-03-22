@@ -1,5 +1,5 @@
 import { ButtonStyle } from "./style";
-import { ReactNode } from 'react'
+import { memo, ReactNode } from 'react'
 interface Props {
     children: ReactNode,
     color?: string,
@@ -8,10 +8,11 @@ interface Props {
     className?: string;
 }
 const Button = ({ onClick, className, children, ...props }: Props): any => {
+
     return (
         <ButtonStyle className={className} onClick={onClick} {...props}>
             {children}
         </ButtonStyle>
     )
 }
-export default Button;
+export default memo(Button);

@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { memo, ReactNode } from "react";
 import { InputStyle } from "./style";
 
 interface Props {
@@ -19,4 +19,4 @@ const Input = ({ type, placeHolder, className, handlerChange, ...props }: Props)
         </InputStyle>
     )
 }
-export default Input;
+export default memo(Input);

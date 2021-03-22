@@ -1,6 +1,6 @@
 import { useHistory, withRouter } from "react-router";
 import AuthForm from "src/components/authForm";
-import { AuthContext, useAuth } from "src/context/auth-context";
+import { useAuth } from "src/context/auth-context";
 import { AuthUser } from "src/type/authType";
 
 const AuthenticationPage = () => {

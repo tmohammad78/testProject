@@ -1,10 +1,10 @@
-import { useContext } from 'react';
+import { FC, useContext } from 'react';
 import { DataContext } from 'src/context/data-context';
 import './style.scss';
 
-const TitleQuestion = () => {
+const TitleQuestion: FC = () => {
 
-    const { state, dispatch } = useContext(DataContext)
+    const { state } = useContext(DataContext)
     return (
         <div className="spanBox" >
             <span>{state.questions[state.step]}</span>

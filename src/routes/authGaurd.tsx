@@ -1,4 +1,4 @@
-import React, { Component, useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import {
     Route,
     Redirect,

@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useReducer } from "react";
+import { createContext, ReactNode, useReducer } from "react";
 import { ContextState } from "src/type/contextState";
 
 const initial: ContextState = {

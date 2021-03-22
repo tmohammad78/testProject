@@ -1,27 +1,22 @@
-import { useEffect, useState } from "react"
+import { FC, memo, useContext, useEffect, useState } from "react"
+import { DataContext } from "src/context/data-context"
+import Icon from "../iconElement"
+import "./style.scss";
 
 
-const IconBox = ({ answerList }: any) => {
-    console.log(answerList)
-    const [answers, setAnswers] = useState(answerList)
-    const [iconStatus, setIconStatus] = useState([''])
-    console.log(answerList)
-    // useEffect(() => {
-    //     answerList.find((item: any) => {
-    //         console.log(item)
-    //         const a = Object.keys(item).includes("status")
-    //         if (a) {
-
-    //             setIconStatus(prev => [...prev, item.status])
-    //         }
-    //     })
-
-    //     console.log(iconStatus)
-    // }, [answerList])
+const IconBox: FC = () => {
+    const { state } = useContext(DataContext)
     return (
-        <div>
-            dfvdfv
+        <div className="iconBox">
+            {
+                state.result.map((status: string, i: number) => {
+                    return (
+                        <Icon key={i}
+                            name={status === "correct" ? 'tick' : 'times'} />
+                    )
+                })
+            }
         </div>
     )
 }
-export default IconBox
+export default memo(IconBox);

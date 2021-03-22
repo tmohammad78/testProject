@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, Dispatch, FC, useContext, useEffect, useReducer, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import { factoryMethod } from '../../utils/factoryMethod'
 import Spinner from "src/components/spinner";
 import RestApi from "src/Api/rest";

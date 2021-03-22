@@ -1,4 +1,3 @@
-import { useContext, useEffect } from "react";
 import {
     Switch,
     Route,
