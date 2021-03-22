@@ -1,3 +1,5 @@
 module.exports = {
-    addons: ['@storybook/addon-actions'],
+    addons: ['@storybook/addon-actions', '@storybook/preset-create-react-app'],
 }
+
+

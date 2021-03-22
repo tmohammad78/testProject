@@ -1,8 +1,10 @@
 import styled from 'styled-components';
-
-export const ButtonStyle = styled.button.attrs(props => ({
-  type: 'text'
-}))`
+interface ButtonType {
+  prl?: number;
+  ptb?: number;
+  color?: string
+}
+export const ButtonStyle = styled.button<ButtonType>`
     padding-left : ${({ prl }) => prl || 5}px;    
     padding-right : ${({ prl }) => prl || 5}px;
     padding-top : ${({ ptb }) => ptb || 10}px;
@@ -23,10 +25,10 @@ export const ButtonStyle = styled.button.attrs(props => ({
     &[disabled] {
         cursor: default;
         background-color: #eeee;
-      }
-      &:focus {
+    }
+    &:focus {
         -webkit-appearance: none;
         outline: 0px !important ;
         -webkit-tap-highlight-color: transparent;
-      }
+    }
 `

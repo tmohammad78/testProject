@@ -1,5 +1,6 @@
-import { FC, memo, useContext, useEffect, useState } from "react"
-import { DataContext } from "src/context/data-context"
+import React from 'react'
+import { FC, memo, useContext } from "react"
+import { DataContext } from "../../context/data-context"
 import Icon from "../iconElement"
 import "./style.scss";
 
@@ -9,7 +10,7 @@ const IconBox: FC = () => {
     return (
         <div className="iconBox">
             {
-                state.result.map((status: string, i: number) => {
+                state?.result.map((status: string, i: number) => {
                     return (
                         <Icon key={i}
                             name={status === "correct" ? 'tick' : 'times'} />
