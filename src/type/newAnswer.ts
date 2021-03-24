@@ -3,5 +3,4 @@ export interface newAnswer {
     correct: boolean;
     id: number;
     active?: boolean;
-    status?: string
 }

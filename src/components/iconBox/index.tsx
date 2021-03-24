@@ -10,10 +10,10 @@ const IconBox: FC = () => {
     return (
         <div className="iconBox">
             {
-                state?.result.map((status: string, i: number) => {
+                state?.result.map((status: boolean, i: number) => {
                     return (
                         <Icon key={i}
-                            name={status === "correct" ? 'tick' : 'times'} />
+                            name={status ? 'tick' : 'times'} />
                     )
                 })
             }

@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useReducer } from "react";
 import { ContextState } from "src/type/contextState";
+import React from 'react'
 
 const initial: ContextState = {
     questions: [],

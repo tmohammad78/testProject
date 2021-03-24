@@ -10,7 +10,6 @@ const QuestionPage: FC = () => {
                 <div className="inner" >
                     <div className="inner-child" ></div>
                 </div>
-
                 <QuestionContainer />
             </div>
         </DataProvider>

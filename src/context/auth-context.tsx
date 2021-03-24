@@ -1,7 +1,7 @@
 
 import { createContext, ReactNode, useContext, useReducer } from 'react';
 import { AuthType } from 'src/type/authType';
-
+import React from 'react'
 
 const initial: AuthType = {
     loading: false,

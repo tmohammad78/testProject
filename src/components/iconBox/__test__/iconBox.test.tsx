@@ -20,7 +20,7 @@ xdescribe("Icon Box component", () => {
         jest.mock('../../iconElement', () => <div data-testid="icon" ></div>)
         const dd = {
             state: {
-                result: ['correct']
+                result: [true]
             }
         }
         const { getByTestId } = render(

@@ -6,10 +6,11 @@ interface Props {
     borderColor?: string;
     onClick?: (e?: React.MouseEvent) => void;
     className?: string;
+    id?: number
 }
-const Button = ({ onClick, className, children, ...props }: Props): any => {
+const Button = ({ onClick, className, id, children, ...props }: Props): any => {
     return (
-        <ButtonStyle className={className} onClick={onClick} {...props}>
+        <ButtonStyle className={className} onClick={onClick} id={id?.toString()} {...props}>
             {children}
         </ButtonStyle>
     )

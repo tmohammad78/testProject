@@ -1,10 +1,10 @@
 import axios from "axios";
 import { FC, useContext, useEffect, useState } from "react";
 import { factoryMethod } from '../../utils/factoryMethod'
-import Spinner from "src/components/spinner";
-import RestApi from "src/Api/rest";
-import { DataContext } from "src/context/data-context";
-import QuestionBox from "src/components/questionBox";
+import Spinner from "../../components/spinner";
+import RestApi from "../../Api/rest";
+import { DataContext } from "../../context/data-context";
+import QuestionBox from "../../components/questionBox";
 
 
 const QuestionContainer: FC = () => {
@@ -13,12 +13,7 @@ const QuestionContainer: FC = () => {
 
     useEffect(() => {
         fetchData();
-        console.log("Scsdc", state);
     }, [])
-    useEffect(() => {
-
-        console.log("Scsdc", state);
-    })
     /**
      * This method is responsible to fetch data , call factory method to create 
      * new object and set questions

@@ -1,7 +1,12 @@
 import './style.scss';
+
 const Spinner = () => {
     return (
-        <div className="loader">Loading...</div>
+        <div className="background">
+            <div className="inner-spinner"  >
+                <div className="loading"></div>
+            </div>
+        </div>
     )
 }
 export default Spinner;

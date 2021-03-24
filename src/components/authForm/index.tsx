@@ -1,5 +1,5 @@
 
-import { FC, ReactNode, useState } from "react";
+import { useState } from "react";
 
 import { AuthUser } from "src/type/authType";
 import Button from "../button";
@@ -9,6 +9,7 @@ import "./style.scss";
 interface Props {
     handlerSubmitForm: ({ firstname, lastname }: AuthUser) => void
 }
+
 const AuthForm = ({ handlerSubmitForm }: Props) => {
     const [data, setData] = useState<AuthUser>({
         firstname: '',

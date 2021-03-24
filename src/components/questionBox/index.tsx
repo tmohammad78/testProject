@@ -1,4 +1,4 @@
-import { FC, useContext, useState } from "react";
+import { FC, useContext } from "react";
 import { DataContext } from "src/context/data-context";
 
 import ButtonList from "../buttonList";
