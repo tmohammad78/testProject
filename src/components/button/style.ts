@@ -5,17 +5,17 @@ interface ButtonType {
   color?: string
 }
 export const ButtonStyle = styled.button<ButtonType>`
-    padding-left : ${({ prl }) => prl || 5}px;    
-    padding-right : ${({ prl }) => prl || 5}px;
-    padding-top : ${({ ptb }) => ptb || 10}px;
-    padding-bottom: ${({ ptb }) => ptb || 10}px;
+    padding-left : ${({ prl }) => prl || .25}rem;    
+    padding-right : ${({ prl }) => prl || .25}rem;
+    padding-top : ${({ ptb }) => ptb || .5}rem;
+    padding-bottom: ${({ ptb }) => ptb || .5}rem;
     width: 90%;
     margin: .5rem auto;
     color : ${({ color }) => color};
     background-color:transparent;
-    border-radius: 20px;
+    border-radius: 1rem;
     word-break: break-all;
-    box-shadow : 0px 0px 5px 0px rgb(0 0 0 / 48%);
+    box-shadow : 0 0 .25rem 0 rgb(0 0 0 / 48%);
     &.incorrect{
       border-color: red;
     }
@@ -28,7 +28,7 @@ export const ButtonStyle = styled.button<ButtonType>`
     }
     &:focus {
         -webkit-appearance: none;
-        outline: 0px !important ;
+        outline: 0 !important ;
         -webkit-tap-highlight-color: transparent;
     }
 `

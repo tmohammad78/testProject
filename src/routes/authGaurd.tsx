@@ -6,10 +6,9 @@ import {
 } from "react-router-dom";
 
 
-import AuthenticationPage from "src/pages/authentication";
-import { AuthContext } from '../context/auth-context';
+import AuthenticationPage from "../pages/authentication";
+import { AuthContext } from "../context/auth-context";
 
-interface Props extends RouteComponentProps { }
 
 const AuthGaurd = (props: any) => {
     const { state } = useContext(AuthContext)

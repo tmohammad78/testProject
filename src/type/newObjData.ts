@@ -1,4 +1,5 @@
-import { newAnswer } from 'src/type/newAnswer';
+import { newAnswer } from './newAnswer';
+
 export interface newObjData {
     questions: string[];
     answers: newAnswer[][];

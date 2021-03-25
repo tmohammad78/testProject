@@ -1,6 +1,6 @@
-import { createContext, ReactNode, useReducer } from "react";
-import { ContextState } from "src/type/contextState";
-import React from 'react'
+import React, { createContext, ReactNode, useReducer } from "react";
+
+import { ContextState } from "../type/contextState";
 
 const initial: ContextState = {
     questions: [],

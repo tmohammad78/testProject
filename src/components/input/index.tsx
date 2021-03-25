@@ -1,4 +1,5 @@
-import { memo, ReactNode } from "react";
+import { memo } from "react";
+
 import { InputStyle } from "./style";
 
 interface Props {

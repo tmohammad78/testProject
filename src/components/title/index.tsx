@@ -1,5 +1,6 @@
 import { FC, useContext } from 'react';
-import { DataContext } from 'src/context/data-context';
+import { DataContext } from '../../context/data-context';
+
 import './style.scss';
 
 const TitleQuestion: FC = () => {

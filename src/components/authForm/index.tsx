@@ -1,9 +1,10 @@
 
 import { useState } from "react";
 
-import { AuthUser } from "src/type/authType";
+import { AuthUser } from "../../type/authType";
 import Button from "../button";
 import Input from "../input";
+
 import "./style.scss";
 
 interface Props {
@@ -15,10 +16,11 @@ const AuthForm = ({ handlerSubmitForm }: Props) => {
         firstname: '',
         lastname: ''
     })
-    const handlerChange = (e: any) => {
+    const handlerChange = (e: React.FormEvent<EventTarget>) => {
+        let target = e.target as HTMLInputElement;
         setData((prev) => ({
             ...prev,
-            [e.target.id]: e.target.value
+            [target.id]: target.value
         }))
     }
     return (

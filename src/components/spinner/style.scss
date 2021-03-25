@@ -1,4 +1,4 @@
-.background{
+.spinner{
     position: absolute;
     background-color: #a9a9a959;
     top: 0;
@@ -13,14 +13,14 @@
         right: 50%;
         transform: translate(50%, -50%);
         .loading {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: #2b56bf;
-            animation: spin 1s ease-in-out infinite;
-            -webkit-animation: spin 1s ease-in-out infinite;
+          display: inline-block;
+          width: 2.5rem;
+          height: 2.5rem;
+          border: .15rem solid rgba(255,255,255,.3);
+          border-radius: 50%;
+          border-top-color: #2b56bf;
+          animation: spin 1s ease-in-out infinite;
+          -webkit-animation: spin 1s ease-in-out infinite;
           }
           
           @keyframes spin {

@@ -1,10 +1,10 @@
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, useContext, useState } from "react";
 
-import { DataContext } from "src/context/data-context";
+import { DataContext } from "../../context/data-context";
 import { newAnswer } from "../../type/newAnswer";
 import Button from "../button";
-import Spinner from "../spinner";
-import Wrapper from "../wrapper-spinner";
+import Wrapper from "../spinner";
+
 import './style.scss';
 
 

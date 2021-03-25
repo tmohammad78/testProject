@@ -1,9 +1,9 @@
 import { FC, useContext } from "react";
-import { DataContext } from "src/context/data-context";
 
+import { DataContext } from "../../context/data-context";
 import ButtonList from "../buttonList";
-import IconBox from "../iconBox";
 import TitleQuestion from "../title";
+import IconBox from "../iconBox";
 
 const QuestionBox: FC = () => {
     const { state } = useContext(DataContext)

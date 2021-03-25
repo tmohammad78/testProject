@@ -1,5 +1,5 @@
-import { ButtonStyle } from "./style";
 import React, { memo, ReactNode } from 'react'
+import { ButtonStyle } from "./style";
 interface Props {
     children: ReactNode,
     color?: string,

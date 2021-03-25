@@ -1,6 +1,8 @@
+$white_color : #ffff;
 .spanBox{
-    padding: 5px;
-    margin: 20px 0;
+    padding: .25rem;
+    margin: 1rem 0;
     text-align: center;
-    color: #ffff;
+    font-size: 1rem;
+    color: $white_color;
 }

@@ -1,7 +1,8 @@
 import React from 'react'
-import axiosMock from 'axios'
 import { render, screen } from '@testing-library/react'
+
 import QuestionContainer from '../index';
+
 const axios = {
     get: jest.fn().mockResolvedValue({
         res: {
@@ -14,7 +15,6 @@ const axios = {
 
 jest.mock("../../../components/spinner");
 describe("main container component", () => {
-
     test("fetch data", async () => {
         axios.get.mockResolvedValue({
             res: {

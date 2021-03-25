@@ -1,4 +1,4 @@
-import { newObjData } from 'src/type/newObjData';
+import { newObjData } from '../type/newObjData';
 import { QuestionList } from '../pages/mainContainer/_model/questionList';
 
 

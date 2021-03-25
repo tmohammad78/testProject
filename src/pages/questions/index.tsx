@@ -1,6 +1,8 @@
 import { FC } from 'react';
-import { DataProvider } from 'src/context/data-context';
+
+import { DataProvider } from '../../context/data-context';
 import QuestionContainer from '../mainContainer';
+
 import "./style.scss";
 
 const QuestionPage: FC = () => {

@@ -1,10 +1,11 @@
-import axios from "axios";
 import { FC, useContext, useEffect, useState } from "react";
+import axios from "axios";
+
 import { factoryMethod } from '../../utils/factoryMethod'
-import Spinner from "../../components/spinner";
-import RestApi from "../../Api/rest";
 import { DataContext } from "../../context/data-context";
 import QuestionBox from "../../components/questionBox";
+import Spinner from "../../components/spinner";
+import RestApi from "../../Api/rest";
 
 
 const QuestionContainer: FC = () => {
@@ -37,11 +38,12 @@ const QuestionContainer: FC = () => {
 
     return (
         <>
-            {loading && <Spinner />}
-            {
-                state && !loading &&
-                <QuestionBox />
-            }
+            <Spinner showSpinner={loading}>
+                {
+                    state && !loading &&
+                    <QuestionBox />
+                }
+            </Spinner>
         </>
     )
 }
