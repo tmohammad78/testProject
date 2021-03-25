@@ -7,12 +7,14 @@ import IconBox from "../iconBox";
 
 const QuestionBox: FC = () => {
     const { state } = useContext(DataContext)
+    const questionLenght = state.questions.length;
     return (
         <>
             <IconBox />
             <TitleQuestion />
             <ButtonList />
-            {state.step === state.questions.length && <div>Finished</div>}
+            {state.step === questionLenght &&
+                questionLenght > 0 && <div>Finished</div>}
         </>
     )
 }

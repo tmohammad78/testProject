@@ -1,4 +1,4 @@
-import { FC, useContext, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 
 import { DataContext } from "../../context/data-context";
 import { newAnswer } from "../../type/newAnswer";
@@ -43,7 +43,10 @@ const ButtonList: FC = () => {
                 <div className="buttonList">
                     {state.answers[state.step] && state.answers[state.step].map((item: newAnswer, i: number) => {
                         return (
-                            <Button className={selectedId === item.id ? item.correct ? "correct" : "incorrect" : ""} key={item.id} id={item.id} onClick={(e) => handlerClick(e, item)}  >
+                            <Button className={selectedId === item.id ? item.correct ? "correct" : "incorrect" : ""}
+                                key={item.id}
+                                id={item.id}
+                                onClick={(e) => handlerClick(e, item)}  >
                                 {item.answer}
                             </Button>
                         );

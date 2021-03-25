@@ -1,9 +1,9 @@
 
-import { useState } from "react";
+import { memo, useState } from "react";
 
 import { AuthUser } from "../../type/authType";
+import AuthInputForm from "../authInput";
 import Button from "../button";
-import Input from "../input";
 
 import "./style.scss";
 
@@ -12,29 +12,39 @@ interface Props {
 }
 
 const AuthForm = ({ handlerSubmitForm }: Props) => {
-    const [data, setData] = useState<AuthUser>({
+
+    const [infoUser, setInfoUser] = useState<AuthUser>({
         firstname: '',
         lastname: ''
     })
+
     const handlerChange = (e: React.FormEvent<EventTarget>) => {
         let target = e.target as HTMLInputElement;
-        setData((prev) => ({
+        setInfoUser((prev: AuthUser) => ({
             ...prev,
             [target.id]: target.value
         }))
     }
     return (
         <div className="loginForm">
-            <label className="label" htmlFor="firstname" >
-                FirstName
-            </label>
-            <Input placeHolder="First name" handlerChange={handlerChange} id="firstname" className="input" type="text" />
-            <label className="label" htmlFor="lastname" >
-                LastName
-            </label>
-            <Input placeHolder="last name" handlerChange={handlerChange} id="lastname" className="input" type="text" />
-            <Button className="button" onClick={() => handlerSubmitForm(data)} >Submit</Button>
+            <AuthInputForm
+                id="firstname"
+                className="input"
+                icon="user"
+                placeHolder="first name"
+                handlerChange={handlerChange} />
+            <AuthInputForm
+                id="lastname"
+                className="input"
+                icon="user"
+                placeHolder="last name"
+                handlerChange={handlerChange} />
+            <Button
+                bgColor="#39e9e6"
+                color="white"
+                className="button"
+                onClick={() => handlerSubmitForm(infoUser)} >Submit</Button>
         </div>
     )
 }
-export default AuthForm;
+export default memo(AuthForm);

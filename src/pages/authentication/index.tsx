@@ -4,6 +4,8 @@ import AuthForm from "../../components/authForm";
 import { useAuth } from "../../context/auth-context";
 import { AuthUser } from "../../type/authType";
 
+import "./style.scss";
+
 const AuthenticationPage = () => {
     const { dispatch } = useAuth();
     const history = useHistory()
@@ -19,8 +21,10 @@ const AuthenticationPage = () => {
         history.push("/")
     }
     return (
-        <div>
-            <AuthForm handlerSubmitForm={handlerForm} />
+        <div className="auth-page" >
+            <div className="wrapper">
+                <AuthForm handlerSubmitForm={handlerForm} />
+            </div>
         </div>
     )
 }

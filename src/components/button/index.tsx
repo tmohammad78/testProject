@@ -3,6 +3,7 @@ import { ButtonStyle } from "./style";
 interface Props {
     children: ReactNode,
     color?: string,
+    bgColor?: string;
     borderColor?: string;
     onClick?: (e?: React.MouseEvent) => void;
     className?: string;

@@ -3,19 +3,21 @@ import { memo } from "react";
 import { InputStyle } from "./style";
 
 interface Props {
-    className: string;
-    type: string,
-    id: string;
+    className?: string;
+    id?: string;
     placeHolder?: string;
+    border?: string;
+    color?: string;
     handlerChange: (e: any) => void
 }
-const Input = ({ type, placeHolder, className, handlerChange, ...props }: Props) => {
+const Input = ({ placeHolder, border, className, handlerChange, ...props }: Props) => {
 
     return (
-        <InputStyle type={type}
+        <InputStyle type="text"
             onChange={handlerChange}
             placeholder={placeHolder}
             className={className}
+            border={border}
             {...props}>
         </InputStyle>
     )

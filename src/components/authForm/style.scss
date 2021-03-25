@@ -1,13 +1,12 @@
 .loginForm{
-    width: 90%;
-    margin: 0 auto;
-    text-align: center;
-    height: 100vh;
     position: relative;
+    display: flow-root;
+    height: 100vh;
+    text-align: center;
     .button{
         position: absolute;
-        bottom: 1rem;
         right: 0;
         left: 0;
+        bottom: 1rem;
     }
 }

@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import "./style.scss";
 
 interface Props {
-    children: ReactNode,
+    children?: ReactNode,
     showSpinner: boolean
 }
 const Spinner = ({ children, showSpinner }: Props) => {
