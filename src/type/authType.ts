@@ -4,6 +4,6 @@ export interface AuthUser {
 }
 export interface AuthType {
     user: AuthUser | null,
-    loading: boolean;
+    loading?: boolean;
     status: string;
 }

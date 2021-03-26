@@ -12,7 +12,7 @@ const AuthGaurd = ({ Component, ...res }: any) => {
     return (
         <Route {...res} render={
             props => {
-                if (true) {
+                if (state.status === "success") {
                     return <Component {...props} {...res} />
                 } else {
                     return <Redirect to={{

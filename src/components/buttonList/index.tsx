@@ -1,4 +1,4 @@
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, useContext, useRef, useState } from "react";
 
 import { DataContext } from "../../context/data-context";
 import { newAnswer } from "../../type/newAnswer";
@@ -8,11 +8,17 @@ import Wrapper from "../spinner";
 import './style.scss';
 
 
+
 const ButtonList: FC = () => {
     const [loading, setLoading] = useState<boolean>(false)
     const [selectedId, setSelectedId] = useState<number | null>(null)
     const { state, dispatch } = useContext(DataContext)
+    const timeout = useRef<any>(null);
 
+    // useEffect(() => {
+    //     console.log(timeout.current);
+    //     return () => clearTimeout(timeout.current)
+    // }, [timeout.current])
     const handlerClick = (e: any, item: newAnswer) => {
         e.preventDefault()
         setLoading(true)
@@ -27,12 +33,16 @@ const ButtonList: FC = () => {
     const operationDispatch = (item: newAnswer) => {
         dispatch({
             type: "SETRESULT",
-            result: [...state.result, checkStatus(item)]
+            payload: {
+                result: [...state.result, checkStatus(item)]
+            }
         })
-        setTimeout(() => {
+        timeout.current = setTimeout(() => {
             dispatch({
                 type: "NextStep",
-                step: state.step + 1
+                payload:{
+                    step: state.step + 1
+                }
             })
             setLoading(false)
         }, 1000)

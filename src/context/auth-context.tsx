@@ -1,8 +1,14 @@
-
-import { createContext, ReactNode, useContext, useReducer } from 'react';
+import React, { createContext, ReactNode, useContext, useReducer } from 'react';
 import { AuthType } from '../type/authType';
 
-import React from 'react'
+type ContextType = {
+    state: AuthType,
+    dispatch: (action: IActions) => void
+}
+interface IActions {
+    type: string,
+    payload: AuthType
+}
 
 const initial: AuthType = {
     loading: false,
@@ -13,19 +19,16 @@ const initial: AuthType = {
     }
 }
 
-export const AuthContext = createContext<any>(initial);
+export const AuthContext = createContext<ContextType>({ state: initial, dispatch: () => { } });
 
-const reducer = (state: AuthType, action: any) => {
+const reducer = (state: AuthType, action: IActions) => {
     switch (action.type) {
         case "LOGIN":
-            const { firstname, lastname, status } = action.payload;
+            const { user, status } = action.payload;
             return {
                 ...state,
                 status,
-                user: {
-                    firstname,
-                    lastname
-                }
+                user
             }
         default:
             return state;

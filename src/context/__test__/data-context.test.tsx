@@ -28,8 +28,10 @@ function componentQuestion(value) {
             }) : "No Value"}
             <button onClick={() => value.dispatch({
                 type: "SET",
-                questions,
-                answers
+                payload: {
+                    questions,
+                    answers
+                }
 
             })} >click</button>
         </div>

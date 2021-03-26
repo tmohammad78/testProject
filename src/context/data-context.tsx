@@ -2,6 +2,15 @@ import React, { createContext, ReactNode, useReducer } from "react";
 
 import { ContextState } from "../type/contextState";
 
+interface IActions {
+    type: string,
+    payload: any
+}
+type DataContext = {
+    state: ContextState,
+    dispatch: (action: IActions) => void
+}
+
 const initial: ContextState = {
     questions: [],
     answers: [
@@ -14,25 +23,26 @@ const initial: ContextState = {
     result: [],
     step: 0
 }
-export const DataContext = createContext<any>(initial)
 
-const reducer = (state: ContextState, action: any) => {
+export const DataContext = createContext<DataContext>({ state: initial, dispatch: () => { } })
+
+const reducer = (state: ContextState, action: IActions) => {
     switch (action.type) {
         case "SET":
-            const { questions, answers } = action;
+            const { questions, answers } = action.payload;
             return {
                 ...state,
                 answers,
                 questions
             }
         case "NextStep":
-            const { step } = action;
+            const { step } = action.payload;
             return {
                 ...state,
                 step
             }
         case "SETRESULT":
-            const { result } = action;
+            const { result } = action.payload;
             return {
                 ...state,
                 result

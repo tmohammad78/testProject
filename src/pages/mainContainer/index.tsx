@@ -9,8 +9,8 @@ import RestApi from "../../Api/rest";
 
 
 const QuestionContainer: FC = () => {
-    const [loading, setLoading] = useState(false)
-    const { state, dispatch } = useContext(DataContext)
+    const [loading, setLoading] = useState(true)
+    const { dispatch } = useContext(DataContext)
 
     useEffect(() => {
         fetchData();
@@ -20,14 +20,15 @@ const QuestionContainer: FC = () => {
      * new object and set questions
      */
     const fetchData = () => {
-        setLoading(true)
         axios.get(RestApi.getQuestions())
             .then(({ data }: any) => {
                 const { questions, answers } = factoryMethod(data.results)
                 dispatch({
                     type: "SET",
-                    questions,
-                    answers
+                    payload: {
+                        questions,
+                        answers
+                    }
                 })
             })
             .catch((err) => console.log(err))
@@ -37,14 +38,9 @@ const QuestionContainer: FC = () => {
     }
 
     return (
-        <>
-            <Spinner showSpinner={loading}>
-                {
-                    state && !loading &&
-                    <QuestionBox />
-                }
-            </Spinner>
-        </>
+        <Spinner showSpinner={loading}>
+            { !loading && <QuestionBox />}
+        </Spinner>
     )
 }
 export default QuestionContainer;

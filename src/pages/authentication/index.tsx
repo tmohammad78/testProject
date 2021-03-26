@@ -14,8 +14,10 @@ const AuthenticationPage = () => {
             type: "LOGIN",
             payload: {
                 status: "success",
-                firstname,
-                lastname
+                user: {
+                    firstname,
+                    lastname
+                }
             }
         })
         history.push("/")
