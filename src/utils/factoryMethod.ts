@@ -6,6 +6,7 @@ export const factoryMethod = (data: QuestionList[]): newObjData => {
     const questions = data.map((item: QuestionList) => {
         return item.question
     })
+
     const answers = data.map((item: QuestionList, index: number) => {
         const correctAnswer = {
             id: Math.floor(Math.random() * 2001),

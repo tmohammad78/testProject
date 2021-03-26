@@ -1,4 +1,4 @@
-import { FC, useContext, useRef, useState } from "react";
+import React, { FC, useContext, useRef, useState } from "react";
 
 import { DataContext } from "../../context/data-context";
 import { newAnswer } from "../../type/newAnswer";
@@ -40,7 +40,7 @@ const ButtonList: FC = () => {
         timeout.current = setTimeout(() => {
             dispatch({
                 type: "NextStep",
-                payload:{
+                payload: {
                     step: state.step + 1
                 }
             })
@@ -48,22 +48,20 @@ const ButtonList: FC = () => {
         }, 1000)
     }
     return (
-        <>
-            <Wrapper showSpinner={loading}>
-                <div className="buttonList">
-                    {state.answers[state.step] && state.answers[state.step].map((item: newAnswer, i: number) => {
-                        return (
-                            <Button className={selectedId === item.id ? item.correct ? "correct" : "incorrect" : ""}
-                                key={item.id}
-                                id={item.id}
-                                onClick={(e) => handlerClick(e, item)}  >
-                                {item.answer}
-                            </Button>
-                        );
-                    })}
-                </div>
-            </Wrapper>
-        </>
+        <Wrapper showSpinner={loading}>
+            <div className="buttonList">
+                {state.answers[state.step] && state.answers[state.step].map((item: newAnswer, i: number) => {
+                    return (
+                        <Button className={selectedId === item.id ? item.correct ? "correct" : "incorrect" : ""}
+                            key={item.id}
+                            id={item.id}
+                            onClick={(e) => handlerClick(e, item)}  >
+                            {item.answer}
+                        </Button>
+                    );
+                })}
+            </div>
+        </Wrapper>
     )
 }
 export default ButtonList;

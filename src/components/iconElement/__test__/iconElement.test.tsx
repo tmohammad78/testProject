@@ -1,5 +1,5 @@
-import { cleanup, fireEvent, render } from '@testing-library/react'
-import renderer, { act } from 'react-test-renderer';
+import { render } from '@testing-library/react'
+import { act } from 'react-test-renderer';
 import React from 'react'
 import Icon from '../index';
 

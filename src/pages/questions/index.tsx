@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 
 import { DataProvider } from '../../context/data-context';
 import QuestionContainer from '../mainContainer';

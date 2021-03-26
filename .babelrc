@@ -4,5 +4,7 @@
         "@babel/preset-react",
         "@babel/preset-typescript"
     ],
-    "plugins": []
+    "plugins": [
+        "transform-class-properties"
+    ]
 }

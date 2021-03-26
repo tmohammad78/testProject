@@ -8,7 +8,7 @@ interface Props {
     placeHolder?: string;
     border?: string;
     color?: string;
-    handlerChange: (e: any) => void
+    handlerChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 const Input = ({ placeHolder, border, className, handlerChange, ...props }: Props) => {
 

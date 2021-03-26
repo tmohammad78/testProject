@@ -27,9 +27,11 @@ describe("Auth Context", () => {
                             <button onClick={() => value.dispatch({
                                 type: "LOGIN",
                                 payload: {
-                                    firstname: "Mohammad",
-                                    lastname: "Taheri ",
-                                    status: "SUCCESS"
+                                    status: "SUCCESS",
+                                    user: {
+                                        firstname: "Mohammad",
+                                        lastname: "Taheri ",
+                                    }
                                 }
                             })}>Click</button>
                         </>

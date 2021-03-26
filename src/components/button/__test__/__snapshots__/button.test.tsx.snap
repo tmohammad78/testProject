@@ -2,7 +2,7 @@
 
 exports[`Button component snapp shot test and check children value 1`] = `
 <button
-  className="sc-bdfBwQ bHfbUj"
+  className="sc-bdfBwQ bcFdTm"
 >
   Test
 </button>

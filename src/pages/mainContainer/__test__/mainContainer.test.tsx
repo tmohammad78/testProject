@@ -1,34 +1,27 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
-
+import { render, screen, waitFor } from '@testing-library/react'
+// import mockAxios from 'jest-mock-axios';
 import QuestionContainer from '../index';
-
-const axios = {
-    get: jest.fn().mockResolvedValue({
-        res: {
-            data: {
-
-            }
-        }
-    })
-}
-
+import axios from 'axios';
+import { act } from 'react-dom/test-utils';
 jest.mock("../../../components/spinner");
-describe("main container component", () => {
+jest.mock("axios")
+const mockedAxios = axios as jest.Mocked<typeof axios>;
+xdescribe("main container component", () => {
     test("fetch data", async () => {
-        axios.get.mockResolvedValue({
-            res: {
-                data: {
-                    results: [{
-                        correct_answer: "a",
-                        incorrect_answers: ["b", "c", "d"],
-                        question: "Which one is true",
-                    }]
-                }
+        const data = {
+            data: {
+                results: [{
+                    correct_answer: "a",
+                    incorrect_answers: ["b", "c", "d"],
+                    question: "Which one is true",
+                }]
             }
+        };
+        mockedAxios.get.mockResolvedValueOnce(data)
+        act(async () => {
+            render(<QuestionContainer />)
         })
-        const { getByText } = render(<QuestionContainer />)
-        // expect(getByText("Loading")).toHaveTextContent("Loading...")
-        screen.debug()
+        expect(mockedAxios.get).toHaveBeenCalledTimes(1)
     })
 })

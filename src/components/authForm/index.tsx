@@ -25,19 +25,20 @@ const AuthForm = ({ handlerSubmitForm }: Props) => {
             [target.id]: target.value
         }))
     }
+
     return (
         <div className="loginForm">
             <AuthInputForm
                 id="firstname"
                 className="input"
                 icon="user"
-                placeHolder="first name"
+                placeHolder="First name"
                 handlerChange={handlerChange} />
             <AuthInputForm
                 id="lastname"
                 className="input"
                 icon="user"
-                placeHolder="last name"
+                placeHolder="Last name"
                 handlerChange={handlerChange} />
             <Button
                 bgColor="#39e9e6"
