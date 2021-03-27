@@ -2,14 +2,34 @@ import { memo } from "react";
 
 import { InputStyle } from "./style";
 
-interface Props {
+export interface Props {
+    /**
+     * className of input
+     */
     className?: string;
+    /**
+     * id for input tag
+     */
     id?: string;
+    /**
+     * placeHolder 
+     */
     placeHolder?: string;
+    /**
+     * border of input
+     */
     border?: string;
+    /**
+     * color of text
+     */
     color?: string;
+    /**
+     * handler change method
+     */
     handlerChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
+
+
 const Input = ({ placeHolder, border, className, handlerChange, ...props }: Props) => {
 
     return (

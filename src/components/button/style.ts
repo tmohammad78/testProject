@@ -3,7 +3,8 @@ interface ButtonType {
   prl?: number;
   ptb?: number;
   color?: string;
-  bgColor?: string
+  bgColor?: string;
+  fontSize?: number;
 }
 export const ButtonStyle = styled.button<ButtonType>`
     padding-left : ${({ prl }) => prl || .25}rem;    
@@ -12,6 +13,7 @@ export const ButtonStyle = styled.button<ButtonType>`
     padding-bottom: ${({ ptb }) => ptb || .7}rem;
     width: 100%;
     border:none;
+    font-size:${({ fontSize }) => fontSize || 1}rem;
     margin: .5rem auto;
     background-color:${({ bgColor }) => bgColor ? bgColor : "transparent"};
     color : ${({ color }) => color};

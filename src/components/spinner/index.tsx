@@ -2,8 +2,14 @@ import { ReactNode } from "react";
 
 import "./style.scss";
 
-interface Props {
+export interface Props {
+    /**
+     * children
+     */
     children?: ReactNode,
+    /**
+     * show spinner 
+     */
     showSpinner: boolean
 }
 const Spinner = ({ children, showSpinner }: Props) => {
