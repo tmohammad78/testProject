@@ -4,6 +4,15 @@ export interface AuthUser {
 }
 export interface AuthType {
     user: AuthUser | null,
-    loading?: boolean;
     status: string;
+}
+
+interface IObjectKeys {
+    [key: string]: string | boolean | undefined;
+}
+
+export interface ErrorAuth extends IObjectKeys {
+    firstname: string;
+    lastname: string;
+    valid: boolean
 }

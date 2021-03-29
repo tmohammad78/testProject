@@ -13,7 +13,7 @@ export const ButtonStyle = styled.button<ButtonType>`
     padding-bottom: ${({ ptb }) => ptb || .7}rem;
     width: 100%;
     border:none;
-    font-size:${({ fontSize }) => fontSize || 1}rem;
+    font-size:${({ fontSize }) => fontSize || .7}rem;
     margin: .5rem auto;
     background-color:${({ bgColor }) => bgColor ? bgColor : "transparent"};
     color : ${({ color }) => color};

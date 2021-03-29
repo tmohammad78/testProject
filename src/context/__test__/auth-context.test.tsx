@@ -17,30 +17,67 @@ describe("Auth Context", () => {
         expect(getByText("This is")).toBeTruthy();
     })
 
-    test("when Mohammad login", () => {
+    test("when Mohammad login should show error", () => {
         const { getByText } = render(
             <AuthProvider>
                 <AuthContext.Consumer>
                     {
                         value => <>
-                            <span>This is {value.state.user.firstname} {value.state.user.lastname}</span>
-                            <button onClick={() => value.dispatch({
-                                type: "LOGIN",
-                                payload: {
-                                    status: "SUCCESS",
-                                    user: {
-                                        firstname: "Mohammad",
-                                        lastname: "Taheri ",
-                                    }
-                                }
-                            })}>Click</button>
+                            {!value.state.error.valid &&
+                                <span className="error">{value.state.error.firstname}</span>}
+                            <button onClick={() =>
+                                value.login({ firstname: "Mohammad", lastname: "Taheri" })}
+                            >Click</button>
                         </>
                     }
                 </AuthContext.Consumer>
-            </AuthProvider>
+            </AuthProvider >
         )
 
         fireEvent.click(getByText("Click"))
-        expect(getByText("This is Mohammad Taheri")).toBeInTheDocument()
+        expect(document.querySelector(".error").textContent).toEqual("The firstname is incorrect")
+    })
+    test("when Hamed Kazemi login should not show error", () => {
+        const { getByText } = render(
+            <AuthProvider>
+                <AuthContext.Consumer>
+                    {
+                        value => <>
+                            {!value.state.error.valid &&
+                                <span className="error">{value.state.error.firstname}</span>}
+                            <span>{value.state.user.firstname}</span>
+                            <button onClick={() =>
+                                value.login({ firstname: "hamed", lastname: "Kazemi" })}
+                            >Click</button>
+                        </>
+                    }
+                </AuthContext.Consumer>
+            </AuthProvider >
+        )
+
+        fireEvent.click(getByText("Click"))
+        expect(getByText("hamed")).toBeInTheDocument()
+    })
+
+    test("check result on then of login function ", () => {
+        let result
+        const { getByText } = render(
+            <AuthProvider>
+                <AuthContext.Consumer>
+                    {
+                        value => <>
+                            {!value.state.error.valid &&
+                                <span className="error">{value.state.error.firstname}</span>}
+                            <button onClick={() =>
+                                value.login({ firstname: "Mohammad", lastname: "Taheri" }).then(res => {
+                                    result = res
+                                })}
+                            >Click</button>
+                        </>
+                    }
+                </AuthContext.Consumer>
+            </AuthProvider >
+        )
+        expect(result).toBeFalsy
     })
 })

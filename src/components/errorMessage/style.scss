@@ -1,0 +1,15 @@
+.err-box{
+    width: 100%;
+    height: 1rem;
+    text-align: center;
+    .message{
+        font-size: .7rem;
+        color: #ff6e6e;
+        &.warning{
+            color: rgb(216, 139, 15);
+        }
+        &.danger{
+            color: red;
+        }
+    }
+}

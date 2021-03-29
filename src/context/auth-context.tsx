@@ -1,34 +1,45 @@
 import React, { createContext, ReactNode, useContext, useReducer } from 'react';
-import { AuthType } from '../type/authType';
 
-type ContextType = {
-    state: AuthType,
-    dispatch: (action: IActions) => void
-}
-interface IActions {
-    type: string,
-    payload: AuthType
-}
+import {
+    ContextType, AuthActions,
+    AuthAction, AuthContextState
+} from './type/auth'
+import { validation } from '../utils/validation';
+import { AuthUser } from '../type/authType';
 
-const initial: AuthType = {
-    loading: false,
+const initial: AuthContextState = {
     status: '',
     user: {
         firstname: '',
         lastname: ''
+    },
+    error: {
+        firstname: '',
+        lastname: '',
+        valid: false
     }
 }
 
-export const AuthContext = createContext<ContextType>({ state: initial, dispatch: () => { } });
+export const AuthContext = createContext<ContextType>
+    ({
+        state: initial,
+        dispatch: () => { }, login: () => Promise.resolve(true)
+    });
 
-const reducer = (state: AuthType, action: IActions) => {
+
+const reducer = (state: AuthContextState, action: AuthActions): AuthContextState => {
     switch (action.type) {
-        case "LOGIN":
+        case AuthAction.LOGIN:
             const { user, status } = action.payload;
             return {
                 ...state,
                 status,
                 user
+            }
+        case AuthAction.ERROR:
+            return {
+                ...state,
+                error: action.payload
             }
         default:
             return state;
@@ -36,8 +47,32 @@ const reducer = (state: AuthType, action: IActions) => {
 }
 function AuthProvider({ children }: { children: ReactNode }) {
     const [state, dispatch] = useReducer(reducer, initial)
+
+    const login = ({ firstname, lastname }: AuthUser): Promise<boolean> => {
+        const error = validation({ firstname, lastname })
+        if (error.valid) {
+            dispatch({
+                type: AuthAction.LOGIN,
+                payload: {
+                    status: "success",
+                    user: {
+                        firstname,
+                        lastname
+                    },
+                }
+            })
+        }
+        dispatch({
+            type: AuthAction.ERROR,
+            payload: error
+        })
+        return new Promise((resolve, reject) => {
+            resolve(error.valid)
+        })
+    }
+
     return (
-        <AuthContext.Provider value={{ state, dispatch }}>
+        <AuthContext.Provider value={{ state, dispatch, login }}>
             {children}
         </AuthContext.Provider>
     )
