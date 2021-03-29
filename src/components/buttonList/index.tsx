@@ -1,14 +1,17 @@
 import React, { FC, useContext, useRef, useState } from "react";
 
+
 import { DataContext } from "../../context/data-context";
+import { DataAction } from "../../context/type/data";
 import { newAnswer } from "../../type/newAnswer";
-import Button from "../button";
 import Wrapper from "../spinner";
+import Button from "../button";
 
 import './style.scss';
 
-
-
+/**
+ * show list of buttton for answers
+ */
 const ButtonList: FC = () => {
     const [loading, setLoading] = useState<boolean>(false)
     const [selectedId, setSelectedId] = useState<number | null>(null)
@@ -25,21 +28,31 @@ const ButtonList: FC = () => {
         operationDispatch(item);
         setSelectedId(item.id)
     }
+    /**
+     * check correct anwser and return boolean 
+     * @param item :newAnswer objet
+     * @returns : return a boolean type 
+     */
     const checkStatus = (item: newAnswer): boolean => {
         return state.answers[state.step].filter((answer: newAnswer) => answer.id === item.id).flatMap((obj: newAnswer) => {
             return obj.correct;
         })[0]
     }
+    /**
+     * to set result and dispatch for next step
+     * to show a delay , we set false spinner in the setTimeout
+     * @param item : newAnswer object
+     */
     const operationDispatch = (item: newAnswer) => {
         dispatch({
-            type: "SETRESULT",
+            type: DataAction.SETRESULT,
             payload: {
                 result: [...state.result, checkStatus(item)]
             }
         })
         timeout.current = setTimeout(() => {
             dispatch({
-                type: "NextStep",
+                type: DataAction.NextStep,
                 payload: {
                     step: state.step + 1
                 }

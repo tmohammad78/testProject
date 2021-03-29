@@ -1,4 +1,5 @@
-import { useHistory, withRouter } from "react-router";
+import { withRouter } from "react-router";
+
 import AuthForm from "../../components/authForm";
 import "./style.scss";
 

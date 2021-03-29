@@ -4,9 +4,10 @@ import axios from "axios";
 import { factoryMethod } from '../../utils/factoryMethod'
 import { DataContext } from "../../context/data-context";
 import QuestionBox from "../../components/questionBox";
+import { QuestionList } from "./_model/questionList";
+import { DataAction } from "../../context/type/data";
 import Spinner from "../../components/spinner";
 import RestApi from "../../Api/rest";
-import { QuestionList } from "./_model/questionList";
 
 
 const QuestionContainer: FC = () => {
@@ -25,7 +26,7 @@ const QuestionContainer: FC = () => {
             .then(({ data }: { data: { results: QuestionList[] } }) => {
                 const { questions, answers } = factoryMethod(data.results)
                 dispatch({
-                    type: "SET",
+                    type: DataAction.SET,
                     payload: {
                         questions,
                         answers

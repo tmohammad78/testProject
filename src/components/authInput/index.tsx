@@ -1,8 +1,8 @@
 import { memo, useEffect, useState } from "react";
-import "./style.scss";
 
 import Input from "../input";
 
+import "./style.scss";
 interface Props {
     icon: string;
     handlerChange: (e: React.FormEvent<EventTarget>) => void;
@@ -17,6 +17,7 @@ const AuthInputForm = ({ icon, handlerChange, ...props }: Props) => {
     useEffect(() => {
         loadIcon()
     }, [])
+
     const loadIcon = async () => {
         try {
             const { default: src } = await import(`../../img/${icon}.svg`);

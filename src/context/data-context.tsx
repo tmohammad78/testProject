@@ -1,15 +1,8 @@
 import React, { createContext, ReactNode, useReducer } from "react";
 
-import { ContextState } from "../type/contextState";
+import { ContextState } from "./type/data";
+import { DataAction, DataActions, DataContextType } from "./type/data";
 
-interface IActions {
-    type: string,
-    payload: any
-}
-type DataContext = {
-    state: ContextState,
-    dispatch: (action: IActions) => void
-}
 
 const initial: ContextState = {
     questions: [],
@@ -24,24 +17,24 @@ const initial: ContextState = {
     step: 0
 }
 
-export const DataContext = createContext<DataContext>({ state: initial, dispatch: () => { } })
+export const DataContext = createContext<DataContextType>({ state: initial, dispatch: () => { } })
 
-const reducer = (state: ContextState, action: IActions) => {
+const reducer = (state: ContextState, action: DataActions) => {
     switch (action.type) {
-        case "SET":
+        case DataAction.SET:
             const { questions, answers } = action.payload;
             return {
                 ...state,
                 answers,
                 questions
             }
-        case "NextStep":
+        case DataAction.NextStep:
             const { step } = action.payload;
             return {
                 ...state,
                 step
             }
-        case "SETRESULT":
+        case DataAction.SETRESULT:
             const { result } = action.payload;
             return {
                 ...state,

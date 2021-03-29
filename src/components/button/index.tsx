@@ -1,4 +1,5 @@
 import React, { memo, ReactNode } from 'react'
+
 import { ButtonStyle } from "./style";
 export interface Props {
     /**
@@ -43,7 +44,7 @@ export interface Props {
     fontSize?: number;
 }
 
-const Button = ({ onClick, className, id, children, ...props }: Props): any => {
+const Button = ({ onClick, className, id, children, ...props }: Props) => {
     return (
         <ButtonStyle className={className} onClick={onClick} id={id?.toString()} {...props}>
             {children}
