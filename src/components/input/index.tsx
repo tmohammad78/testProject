@@ -1,4 +1,4 @@
-import { memo } from "react";
+import React, { memo } from "react";
 
 import { InputStyle } from "./style";
 
@@ -34,6 +34,7 @@ const Input = ({ placeHolder, border, className, handlerChange, ...props }: Prop
 
     return (
         <InputStyle type="text"
+            aria-label="input"
             onChange={handlerChange}
             placeholder={placeHolder}
             className={className}

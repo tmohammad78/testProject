@@ -1,13 +1,15 @@
 import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
-// import mockAxios from 'jest-mock-axios';
 import QuestionContainer from '../index';
 import axios from 'axios';
 import { act } from 'react-dom/test-utils';
 jest.mock("../../../components/spinner");
 jest.mock("axios")
 const mockedAxios = axios as jest.Mocked<typeof axios>;
-xdescribe("main container component", () => {
+describe("main container component", () => {
+    test("Sddd", () => {
+
+    })
     test("fetch data", async () => {
         const data = {
             data: {
@@ -18,10 +20,9 @@ xdescribe("main container component", () => {
                 }]
             }
         };
-        mockedAxios.get.mockResolvedValueOnce(data)
-        act(async () => {
-            render(<QuestionContainer />)
-        })
-        expect(mockedAxios.get).toHaveBeenCalledTimes(1)
+        await waitFor(() => mockedAxios.get.mockResolvedValueOnce(data))
+        const { debug } = render(<QuestionContainer />)
+        debug()
+
     })
 })
