@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { DataProvider } from '../../context/data-context'
+import { DataProvider } from '../../store/context/data-context'
 import QuestionContainer from '../mainContainer'
 
 import './style.scss'

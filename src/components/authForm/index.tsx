@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useState } from 'react'
 import { useHistory } from 'react-router'
 
-import { useAuth } from '../../context/auth-context'
+import { useAuth } from '../../store/context/auth-context'
 import { AuthUser } from '../../type/authType'
 import ErrorMessage from '../errorMessage'
 import AuthInputForm from '../authInput'

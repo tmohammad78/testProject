@@ -3,7 +3,7 @@ import React from 'react'
 import { render, screen } from "@testing-library/react"
 
 import IconBox from '../index';
-import { DataContext } from '../../../context/data-context';
+import { DataContext } from '../../../store/context/data-context';
 
 const customRender = (ui, { providerProps, ...renderOptions }) => {
     return render(

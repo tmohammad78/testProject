@@ -1,7 +1,7 @@
 import React, { FC, useContext, useState } from 'react'
 
-import { DataContext } from '../../context/data-context'
-import { DataAction } from '../../context/type/data'
+import { DataContext } from '../../store/context/data-context'
+import { DataAction } from '../../store/context/type/data'
 import { newAnswer } from '../../type/newAnswer'
 import Wrapper from '../spinner'
 import Button from '../button'

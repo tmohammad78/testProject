@@ -1,5 +1,5 @@
 /**
- *Class Rest Api
+ *Class Rest api
  */
 class RestApi {
     static readonly baseApi = 'https://opentdb.com/api.php'

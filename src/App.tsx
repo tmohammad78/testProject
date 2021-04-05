@@ -1,5 +1,5 @@
 import Routes from './routes'
-import { AuthProvider } from './context/auth-context'
+import { AuthProvider } from './store/context/auth-context'
 
 function App(): JSX.Element {
     return (

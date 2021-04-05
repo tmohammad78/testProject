@@ -6,8 +6,8 @@ import {
     AuthAction,
     AuthContextState
 } from './type/auth'
-import { validation } from '../utils/validation'
-import { AuthUser } from '../type/authType'
+import { validation } from '../../utils/validation'
+import { AuthUser } from '../../type/authType'
 
 const initial: AuthContextState = {
     status: '',

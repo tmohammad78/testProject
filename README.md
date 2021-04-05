@@ -1,7 +1,7 @@
 # Getting Started 
 
 ## Description
-This is sample app By React,
+This is simple React App for interview,
 In this app I used storybook and jest and react-router and context for state mangment
 
 ## Available Scripts

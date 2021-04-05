@@ -1,4 +1,4 @@
-import { AuthType, AuthUser, ErrorAuth } from '../../type/authType'
+import { AuthType, AuthUser, ErrorAuth } from '../../../type/authType'
 
 export type ContextType = {
     state: AuthContextState

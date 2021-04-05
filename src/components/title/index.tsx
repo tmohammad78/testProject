@@ -1,5 +1,5 @@
 import { FC, useContext } from 'react'
-import { DataContext } from '../../context/data-context'
+import { DataContext } from '../../store/context/data-context'
 
 import './style.scss'
 

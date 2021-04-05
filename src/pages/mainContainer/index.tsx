@@ -2,12 +2,12 @@ import React, { FC, useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 
 import { factoryMethod } from '../../utils/factoryMethod'
-import { DataContext } from '../../context/data-context'
+import { DataContext } from '../../store/context/data-context'
 import QuestionBox from '../../components/questionBox'
 import { QuestionList } from './_model/questionList'
-import { DataAction } from '../../context/type/data'
+import { DataAction } from '../../store/context/type/data'
 import Spinner from '../../components/spinner'
-import RestApi from '../../Api/rest'
+import RestApi from '../../api/rest'
 
 const QuestionContainer: FC = () => {
     const [loading, setLoading] = useState(true)

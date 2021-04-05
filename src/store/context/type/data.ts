@@ -1,5 +1,5 @@
-import { newAnswer } from '../../type/newAnswer'
-import { newObjData } from '../../type/newObjData'
+import { newAnswer } from '../../../type/newAnswer'
+import { newObjData } from '../../../type/newObjData'
 
 export interface ContextState {
     questions: string[]
