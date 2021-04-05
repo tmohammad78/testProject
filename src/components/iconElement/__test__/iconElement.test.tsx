@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react'
-import { act } from 'react-test-renderer';
+import { act } from 'react-test-renderer'
 import React from 'react'
-import Icon from '../index';
+import Icon from '../index'
 
-xdescribe("icon element", () => {
-    it("icon render", () => {
+describe.skip('icon element', () => {
+    it('icon render', () => {
         act(() => {
             const { getByText } = render(<Icon name="test" />)
         })

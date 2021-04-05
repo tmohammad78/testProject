@@ -1,69 +1,79 @@
-import React, { memo, useState } from "react";
-import { useHistory } from "react-router";
+import React, { memo, useCallback, useState } from 'react'
+import { useHistory } from 'react-router'
 
-import { useAuth } from "../../context/auth-context";
-import { AuthUser } from "../../type/authType";
-import ErrorMessage from "../errorMessage";
-import AuthInputForm from "../authInput";
-import Button from "../button";
+import { useAuth } from '../../context/auth-context'
+import { AuthUser } from '../../type/authType'
+import ErrorMessage from '../errorMessage'
+import AuthInputForm from '../authInput'
+import Button from '../button'
 
-import "./style.scss";
+import './style.scss'
 
 /**
  * Auth form component to show login form
- * @returns 
+ * @returns
  */
-const AuthForm = () => {
-    const { state, login } = useAuth();
+function AuthForm() {
+    const { state, login } = useAuth()
     const history = useHistory()
     const [infoUser, setInfoUser] = useState<AuthUser>({
         firstname: '',
         lastname: ''
     })
     /**
-     * pass params to login from context and return result of validation to 
-     * redirect slash path
-     * @param : get firstname and lastname  
+     * Pass params to login from context and return result of validation to redirect slash path
+     * @param : get firstname and lastname
      */
     const handlerSubmitForm = ({ firstname, lastname }: AuthUser) => {
         login({ firstname, lastname }).then((res) => {
-            return res ? history.push("/") : ''
-        });
+            return res ? history.push('/') : ''
+        })
     }
     /**
-     * to setState items
+     * To setState items
      * @param e :event of changes
      */
     const handlerChange = (e: React.FormEvent<EventTarget>) => {
-        let target = e.target as HTMLInputElement;
+        const target = e.target as HTMLInputElement
         setInfoUser((prev: AuthUser) => ({
             ...prev,
             [target.id]: target.value
         }))
     }
 
+    const handlerSubmit = () => handlerSubmitForm(infoUser)
+
     return (
         <div className="loginForm">
             <AuthInputForm
+                className="input"
+                handlerChange={handlerChange}
+                icon="user"
                 id="firstname"
-                className="input"
-                icon="user"
                 placeHolder="First name"
-                handlerChange={handlerChange} />
-            {!state.error.valid && <ErrorMessage message={state.error.firstname} />}
+            />
+            {!state.error.valid && (
+                <ErrorMessage message={state.error.firstname} />
+            )}
             <AuthInputForm
-                id="lastname"
                 className="input"
+                handlerChange={handlerChange}
                 icon="user"
+                id="lastname"
                 placeHolder="Last name"
-                handlerChange={handlerChange} />
-            {!state.error.valid && <ErrorMessage message={state.error.lastname} />}
+            />
+            {!state.error.valid && (
+                <ErrorMessage message={state.error.lastname} />
+            )}
             <Button
                 bgColor="#39e9e6"
-                color="white"
                 className="button"
-                onClick={() => handlerSubmitForm(infoUser)} >Submit</Button>
+                color="white"
+                onClick={handlerSubmit}>
+                Submit
+            </Button>
         </div>
     )
 }
-export default memo(AuthForm);
+
+export default memo(AuthForm)

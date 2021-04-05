@@ -1,12 +1,12 @@
-import Routes from "./routes";
-import { AuthProvider } from "./context/auth-context";
+import Routes from './routes'
+import { AuthProvider } from './context/auth-context'
 
-const App = () => {
-  return (
-    <AuthProvider >
-      <Routes />
-    </AuthProvider>
-  );
+function App(): JSX.Element {
+    return (
+        <AuthProvider>
+            <Routes />
+        </AuthProvider>
+    )
 }
 
-export default App;
+export default App

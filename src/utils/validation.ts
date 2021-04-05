@@ -1,24 +1,25 @@
-import { ErrorAuth } from './../type/authType';
+import { ErrorAuth } from '../type/authType'
 
 interface IObjectKeys {
-    [key: string]: string;
+    [key: string]: string
 }
 
 interface Value extends IObjectKeys {
-    firstname: string;
-    lastname: string;
+    firstname: string
+    lastname: string
 }
+
 /**
- * 
+ *
  * @param err : get error object
- * @returns :return result 
+ * @returns :return result
  */
 const resultValid = (err: ErrorAuth): boolean => {
     return err.firstname.length === 0 && err.lastname.length === 0
 }
 /**
- * 
- * @param value : with firstname and lastname
+ *
+ * @param value :firstname and lastname
  * @returns : return an error object and result as boolean type
  */
 export const validation = (value: Value): ErrorAuth => {
@@ -28,8 +29,8 @@ export const validation = (value: Value): ErrorAuth => {
         valid: false
     }
     const valid: Value = {
-        firstname: "hamed",
-        lastname: "kazemi"
+        firstname: 'hamed',
+        lastname: 'kazemi'
     }
     for (const [key, str] of Object.entries(value)) {
         if (str.toLowerCase() !== valid[key]) {
@@ -39,6 +40,5 @@ export const validation = (value: Value): ErrorAuth => {
     return {
         ...error,
         valid: resultValid(error)
-    };
+    }
 }
-

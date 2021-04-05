@@ -21,7 +21,7 @@ export default {
 const template = (args: Props) => <Button {...args} />
 
 export const SampleButton = template.bind({});
-SampleButton.args = {
+(SampleButton as any).args = {
     children: 'Click',
     bgColor: '#ff0',
     borderColor: '#ff0',

@@ -1,11 +1,13 @@
-import React, { createContext, ReactNode, useContext, useReducer } from 'react';
+import React, { createContext, ReactNode, useContext, useReducer } from 'react'
 
 import {
-    ContextType, AuthActions,
-    AuthAction, AuthContextState
+    ContextType,
+    AuthActions,
+    AuthAction,
+    AuthContextState
 } from './type/auth'
-import { validation } from '../utils/validation';
-import { AuthUser } from '../type/authType';
+import { validation } from '../utils/validation'
+import { AuthUser } from '../type/authType'
 
 const initial: AuthContextState = {
     status: '',
@@ -20,32 +22,39 @@ const initial: AuthContextState = {
     }
 }
 
-export const AuthContext = createContext<ContextType>
-    ({
-        state: initial,
-        dispatch: () => { }, login: () => Promise.resolve(true)
-    });
+export const AuthContext = createContext<ContextType>({
+    state: initial,
+    dispatch: () => {
+        //
+    },
+    login: () => Promise.resolve(true)
+})
 
-
-const reducer = (state: AuthContextState, action: AuthActions): AuthContextState => {
+const reducer = (
+    state: AuthContextState,
+    action: AuthActions
+): AuthContextState => {
     switch (action.type) {
-        case AuthAction.LOGIN:
-            const { user, status } = action.payload;
+        case AuthAction.LOGIN: {
+            const { user, status } = action.payload
             return {
                 ...state,
                 status,
                 user
             }
-        case AuthAction.ERROR:
+        }
+        case AuthAction.ERROR: {
             return {
                 ...state,
                 error: action.payload
             }
+        }
         default:
-            return state;
+            return state
     }
 }
-function AuthProvider({ children }: { children: ReactNode }) {
+
+function AuthProvider({ children }: { children: ReactNode }): JSX.Element {
     const [state, dispatch] = useReducer(reducer, initial)
 
     const login = ({ firstname, lastname }: AuthUser): Promise<boolean> => {
@@ -54,11 +63,11 @@ function AuthProvider({ children }: { children: ReactNode }) {
             dispatch({
                 type: AuthAction.LOGIN,
                 payload: {
-                    status: "success",
+                    status: 'success',
                     user: {
                         firstname,
                         lastname
-                    },
+                    }
                 }
             })
         }
@@ -66,7 +75,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
             type: AuthAction.ERROR,
             payload: error
         })
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             resolve(error.valid)
         })
     }
@@ -77,5 +86,6 @@ function AuthProvider({ children }: { children: ReactNode }) {
         </AuthContext.Provider>
     )
 }
+
 const useAuth = () => useContext(AuthContext)
 export { AuthProvider, useAuth }

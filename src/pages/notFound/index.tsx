@@ -1,9 +1,9 @@
-const NotFound = () => {
-
+function NotFound() {
     return (
         <div>
-            <span> Not Found</span>
+            <span>Not Found</span>
         </div>
     )
 }
-export default NotFound;
+
+export default NotFound

@@ -1,12 +1,12 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useState } from 'react'
 
 import './style.scss'
 
 interface Props {
-    name: string;
+    name: string
 }
 
-const Icon = ({ name, ...props }: Props) => {
+function Icon({ name, ...props }: Props) {
     const [state, setState] = useState({
         src: ''
     })
@@ -15,17 +15,15 @@ const Icon = ({ name, ...props }: Props) => {
     }, [])
     const loadImage = async () => {
         try {
-            const { default: src } = await import(`../../img/${name}.svg`);
+            const { default: src } = await import(`../../img/${name}.svg`)
             setState({
                 src
             })
         } catch (err) {
-            console.log("In loading image we have problem ");
+            console.log('In loading image we have problem ')
         }
     }
-    return (
-        <img className="image" alt={name} src={state.src}  {...props} />
-    )
+    return <img alt={name} className="image" src={state.src} {...props} />
 }
 
-export default memo(Icon);
+export default memo(Icon)

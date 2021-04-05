@@ -1,11 +1,11 @@
-import { withRouter } from "react-router";
+import { withRouter } from 'react-router'
 
-import AuthForm from "../../components/authForm";
-import "./style.scss";
+import AuthForm from '../../components/authForm'
+import './style.scss'
 
-const AuthenticationPage = () => {
+function AuthenticationPage() {
     return (
-        <div className="auth-page" >
+        <div className="auth-page">
             <div className="wrapper">
                 <AuthForm />
             </div>
@@ -13,4 +13,4 @@ const AuthenticationPage = () => {
     )
 }
 
-export default withRouter(AuthenticationPage);
+export default withRouter(AuthenticationPage)

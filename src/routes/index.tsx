@@ -1,34 +1,29 @@
-import { lazy, Suspense } from "react";
-import {
-    Switch,
-    Route,
-    BrowserRouter,
-} from "react-router-dom";
+import { lazy, Suspense } from 'react'
+import { Switch, Route, BrowserRouter } from 'react-router-dom'
 
-import AuthGaurd from "./authGaurd";
-import Spinner from "../components/spinner";
+import AuthGaurd from './authGaurd'
+import Spinner from '../components/spinner'
 
-const QuestionPage = lazy(() => import("../pages/questions"))
-const AuthenticationPage = lazy(() => import("../pages/authentication"))
-const NotFound = lazy(() => import("../pages/notFound"))
+const QuestionPage = lazy(() => import('../pages/questions'))
+const AuthenticationPage = lazy(() => import('../pages/authentication'))
+const NotFound = lazy(() => import('../pages/notFound'))
 
 const renderSpinner = () => {
-    return (
-        <Spinner showSpinner></Spinner>
-    )
+    return <Spinner showSpinner />
 }
-const Routes = () => {
+
+function Routes() {
     return (
         <BrowserRouter>
-            <Suspense fallback={renderSpinner()} >
+            <Suspense fallback={renderSpinner()}>
                 <Switch>
-                    <AuthGaurd path="/" exact Component={QuestionPage} />
-                    <Route path="/login" component={AuthenticationPage} />
-                    <Route path="*" component={NotFound} />
+                    <AuthGaurd Component={QuestionPage} exact path="/" />
+                    <Route component={AuthenticationPage} path="/login" />
+                    <Route component={NotFound} path="*" />
                 </Switch>
             </Suspense>
         </BrowserRouter>
     )
 }
 
-export default Routes;
+export default Routes

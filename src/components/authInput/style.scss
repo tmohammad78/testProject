@@ -1,33 +1,37 @@
-$white_color:white;
-.input-parent{
-    display:flex;
-    padding: .4rem .7rem;
-    align-content: space-between;
-    align-items: center;
-    border-radius: 25px;
-    margin: 1rem 0;
-    border: .1rem solid #39e9e6;
-    background-color:#516075;
-    .icon{
-        width: 15%;
-        img{
-            width: 1.1rem;
-            height: 1.1rem;
-        }
+$white_color: white;
+.input-parent {
+  display: flex;
+  padding: .4rem .7rem;
+  align-content: space-between;
+  align-items: center;
+  border-radius: 25px;
+  margin: 1rem 0;
+  border: .1rem solid #39e9e6;
+  background-color: #516075;
+
+  .icon {
+    width: 15%;
+
+    img {
+      width: 1.1rem;
+      height: 1.1rem;
     }
-    .input{
-        width: 70%;
-    }
-}            
-::placeholder {
-    color: $white_color;
-    opacity: .8;
   }
 
-  :-ms-input-placeholder {
-    color: $white_color;
+  .input {
+    width: 70%;
   }
-  
-  ::-ms-input-placeholder {
-    color: $white_color;
-  }
+}
+
+::placeholder {
+  color: $white_color;
+  opacity: .8;
+}
+
+:-ms-input-placeholder {
+  color: $white_color;
+}
+
+::-ms-input-placeholder {
+  color: $white_color;
+}

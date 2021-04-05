@@ -15,6 +15,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ### `yarn test`
 Launches the test runner in the interactive watch mode.
 You can use --watch 
+### `yarn lint`
+To check lint of project
+
 ### `yarn storybook`
 To see components and documents , like Button and Input and etc in the stroybook panel
 ### `yarn build`

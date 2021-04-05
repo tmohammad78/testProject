@@ -1,54 +1,60 @@
 import React, { memo, ReactNode } from 'react'
 
-import { ButtonStyle } from "./style";
+import { ButtonStyle } from './style'
+
 export interface Props {
     /**
      * Text to show in the button
      */
-    children: ReactNode,
+    children: ReactNode
     /**
      * color of text button
      */
-    color?: string,
+    color?: string
     /**
      * padding right and left
      */
-    prl?: number;
+    prl?: number
     /**
      * padding top and bottom
      */
-    ptb?: number;
+    ptb?: number
     /**
      * background color of button
      */
-    bgColor?: string;
+    bgColor?: string
     /**
      * border color of button
      */
-    borderColor?: string;
+    borderColor?: string
     /**
      * onClick handler for check event
      */
-    onClick?: (e?: React.MouseEvent) => void;
+    onClick?: (e?: React.MouseEvent) => void
     /**
      * specific className
      */
-    className?: string;
+    className?: string
     /**
      * id of button
      */
-    id?: number;
+    id?: number
     /**
      * font size
      */
-    fontSize?: number;
+    fontSize?: number
 }
 
-const Button = ({ onClick, className, id, children, ...props }: Props) => {
+function Button({ onClick, className, id, children, ...props }: Props) {
     return (
-        <ButtonStyle className={className} onClick={onClick} id={id?.toString()} {...props}>
+        <ButtonStyle
+            className={className}
+            id={id?.toString()}
+            onClick={onClick}
+            {...props}>
             {children}
         </ButtonStyle>
     )
 }
-export default memo(Button);
+
+export default memo(Button)

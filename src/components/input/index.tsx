@@ -1,45 +1,50 @@
-import { memo } from "react";
+import { memo } from 'react'
 
-import { InputStyle } from "./style";
+import { InputStyle } from './style'
 
 export interface Props {
     /**
      * className of input
      */
-    className?: string;
+    className?: string
     /**
      * id for input tag
      */
-    id?: string;
+    id?: string
     /**
-     * placeHolder 
+     * placeHolder
      */
-    placeHolder?: string;
+    placeHolder?: string
     /**
      * border of input
      */
-    border?: string;
+    border?: string
     /**
      * color of text
      */
-    color?: string;
+    color?: string
     /**
      * handler change method
      */
     handlerChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-
-const Input = ({ placeHolder, border, className, handlerChange, ...props }: Props) => {
-
+function Input({
+    placeHolder,
+    border,
+    className,
+    handlerChange,
+    ...props
+}: Props) {
     return (
-        <InputStyle type="text"
+        <InputStyle
+            border={border}
+            className={className}
             onChange={handlerChange}
             placeholder={placeHolder}
-            className={className}
-            border={border}
-            {...props}>
-        </InputStyle>
+            type="text"
+            {...props}
+        />
     )
 }
-export default memo(Input);
+export default memo(Input)

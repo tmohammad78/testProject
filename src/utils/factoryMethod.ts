@@ -1,10 +1,10 @@
-import { newObjData } from '../type/newObjData';
-import { QuestionList } from '../pages/mainContainer/_model/questionList';
+import { newObjData } from '../type/newObjData'
+import { QuestionList } from '../pages/mainContainer/_model/questionList'
 
 /**
- * make better object of data to get to the components
- * @param data : question list of data 
- * @returns : return 
+ * Make better object of data to get to the components
+ * @param data : question list of data
+ * @returns : return
  */
 export const factoryMethod = (data: QuestionList[]): newObjData => {
     const questions = data.map((item: QuestionList) => {

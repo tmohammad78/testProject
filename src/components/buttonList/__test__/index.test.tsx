@@ -1,8 +1,8 @@
 import React from 'react'
-import { act } from 'react-test-renderer';
-import { fireEvent, render, screen } from '@testing-library/react'
+import {act} from 'react-test-renderer';
+import {fireEvent, render, screen} from '@testing-library/react'
 
-import { DataContext } from '../../../context/data-context'
+import {DataContext} from '../../../context/data-context'
 import ButtonList from '../index'
 
 jest.mock("../../../components/spinner");
@@ -30,8 +30,8 @@ describe("Button list component", () => {
         const dispatch = jest.fn()
         act(() => {
             render(
-                <DataContext.Provider value={{ state: fakeState, dispatch }}>
-                    <ButtonList />
+                <DataContext.Provider value={{state: fakeState, dispatch}}>
+                    <ButtonList/>
                 </DataContext.Provider>
             )
         })

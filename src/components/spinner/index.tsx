@@ -1,26 +1,27 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react'
 
-import "./style.scss";
+import './style.scss'
 
 export interface Props {
     /**
      * children
      */
-    children?: ReactNode,
+    children?: ReactNode
     /**
-     * show spinner 
+     * show spinner
      */
     showSpinner: boolean
 }
-const Spinner = ({ children, showSpinner }: Props) => {
+
+function Spinner({ children, showSpinner }: Props) {
     return (
-        <div className={showSpinner ? "spinner" : ""}>
-            <div className="inner-spinner"  >
-                <div className="loading">
-                </div>
+        <div className={showSpinner ? 'spinner' : ''}>
+            <div className="inner-spinner">
+                <div className="loading" />
             </div>
             {children}
         </div>
     )
 }
-export default Spinner;
+
+export default Spinner

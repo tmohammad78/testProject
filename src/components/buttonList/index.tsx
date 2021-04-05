@@ -1,13 +1,12 @@
-import React, { FC, useContext, useRef, useState } from "react";
+import React, { FC, useContext, useState } from 'react'
 
+import { DataContext } from '../../context/data-context'
+import { DataAction } from '../../context/type/data'
+import { newAnswer } from '../../type/newAnswer'
+import Wrapper from '../spinner'
+import Button from '../button'
 
-import { DataContext } from "../../context/data-context";
-import { DataAction } from "../../context/type/data";
-import { newAnswer } from "../../type/newAnswer";
-import Wrapper from "../spinner";
-import Button from "../button";
-
-import './style.scss';
+import './style.scss'
 
 /**
  * show list of buttton for answers
@@ -16,27 +15,24 @@ const ButtonList: FC = () => {
     const [loading, setLoading] = useState<boolean>(false)
     const [selectedId, setSelectedId] = useState<number | null>(null)
     const { state, dispatch } = useContext(DataContext)
-    const timeout = useRef<any>(null);
 
-    // useEffect(() => {
-    //     console.log(timeout.current);
-    //     return () => clearTimeout(timeout.current)
-    // }, [timeout.current])
     const handlerClick = (e: any, item: newAnswer) => {
         e.preventDefault()
         setLoading(true)
-        operationDispatch(item);
+        operationDispatch(item)
         setSelectedId(item.id)
     }
     /**
-     * check correct anwser and return boolean 
+     * check correct answer and return boolean
      * @param item :newAnswer objet
-     * @returns : return a boolean type 
+     * @returns : return a boolean type
      */
     const checkStatus = (item: newAnswer): boolean => {
-        return state.answers[state.step].filter((answer: newAnswer) => answer.id === item.id).flatMap((obj: newAnswer) => {
-            return obj.correct;
-        })[0]
+        return state.answers[state.step]
+            .filter((answer: newAnswer) => answer.id === item.id)
+            .flatMap((obj: newAnswer) => {
+                return obj.correct
+            })[0]
     }
     /**
      * to set result and dispatch for next step
@@ -50,7 +46,7 @@ const ButtonList: FC = () => {
                 result: [...state.result, checkStatus(item)]
             }
         })
-        timeout.current = setTimeout(() => {
+        setTimeout(() => {
             dispatch({
                 type: DataAction.NextStep,
                 payload: {
@@ -60,21 +56,34 @@ const ButtonList: FC = () => {
             setLoading(false)
         }, 1000)
     }
+    /**
+     * To handler Render Button
+     */
+    const handlerRenderButton = () => {
+        return state.answers[state.step].map((item: newAnswer) => {
+            const className =
+                selectedId === item.id
+                    ? item.correct
+                        ? 'correct'
+                        : 'incorrect'
+                    : ''
+            return (
+                <Button
+                    className={className}
+                    id={item.id}
+                    key={item.id}
+                    onClick={(e) => handlerClick(e, item)}>
+                    {item.answer}
+                </Button>
+            )
+        })
+    }
     return (
         <Wrapper showSpinner={loading}>
             <div className="buttonList">
-                {state.answers[state.step] && state.answers[state.step].map((item: newAnswer, i: number) => {
-                    return (
-                        <Button className={selectedId === item.id ? item.correct ? "correct" : "incorrect" : ""}
-                            key={item.id}
-                            id={item.id}
-                            onClick={(e) => handlerClick(e, item)}  >
-                            {item.answer}
-                        </Button>
-                    );
-                })}
+                {state.answers[state.step] && handlerRenderButton()}
             </div>
         </Wrapper>
     )
 }
-export default ButtonList;
+export default ButtonList
