@@ -1,0 +1,23 @@
+
+.main-box {
+  height: 100vh;
+  width: 90%;
+  margin: 0 auto;
+
+  .inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    bottom: 53%;
+    background-color: white;
+
+    .inner-child {
+      background: #0a3d82;
+      height: 100%;
+      border-bottom-left-radius: 75% 22%;
+      border-bottom-right-radius: 75% 22%;
+    }
+  }
+}
