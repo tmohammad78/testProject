@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-# testProject
-=======
+# Sample question app
 # Getting Started 
 
 ## Description
@@ -26,6 +24,3 @@ To see components and documents , like Button and Input and etc in the stroybook
 ### `yarn build`
 You can build your app 
 
-### `yarn eject`
-To eject app and config webpack 
->>>>>>> f14079e8e460dcc07d8d69803cbf033bbb56e5de
